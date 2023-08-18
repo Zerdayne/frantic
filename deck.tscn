@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://e4nxfnbigdbq"]
+
+[ext_resource type="Script" path="res://deck.gd" id="1_kebt1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wh6f"]
+size = Vector3(5, 7, 0.02)
+
+[node name="Deck" type="Node3D"]
+script = ExtResource("1_kebt1")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_0wh6f")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

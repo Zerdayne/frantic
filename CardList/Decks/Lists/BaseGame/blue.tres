@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=15 format=3 uid="uid://du2pv4itxv5l1"]
+
+[ext_resource type="Resource" uid="uid://csp5snxyk15as" path="res://CardList/Cards/1.tres" id="1_1jhm6"]
+[ext_resource type="Resource" uid="uid://crbq8yivtvpk6" path="res://CardList/Cards/2.tres" id="2_1boms"]
+[ext_resource type="Script" path="res://CardList/Decks/CardListResource.gd" id="3_2q8h0"]
+[ext_resource type="Resource" uid="uid://bn2gyhfwqavao" path="res://CardList/Cards/3.tres" id="3_qe7n5"]
+[ext_resource type="Resource" uid="uid://sdow5hv4rpfy" path="res://CardList/Cards/4.tres" id="4_87qyd"]
+[ext_resource type="Resource" uid="uid://cbikenh7o3nut" path="res://CardList/Cards/5.tres" id="5_ien33"]
+[ext_resource type="Resource" uid="uid://diy6alb511ys4" path="res://CardList/Cards/6.tres" id="6_tj6js"]
+[ext_resource type="Resource" uid="uid://dl64oxp0mo7mr" path="res://CardList/Cards/7.tres" id="7_mphr3"]
+[ext_resource type="Resource" uid="uid://c67yiws0s1v4" path="res://CardList/Cards/8.tres" id="8_xutrq"]
+[ext_resource type="Resource" uid="uid://daslpxaccoego" path="res://CardList/Cards/9.tres" id="9_hgoq6"]
+[ext_resource type="Resource" uid="uid://b181ekds2ok8f" path="res://CardList/Cards/second_chance.tres" id="10_g172o"]
+[ext_resource type="Resource" uid="uid://bagt1s0u3lrb0" path="res://CardList/Cards/skip.tres" id="11_tf5kq"]
+[ext_resource type="Resource" uid="uid://crtssq06laks5" path="res://CardList/Cards/exchange.tres" id="12_0jypn"]
+[ext_resource type="Resource" uid="uid://boaosh1hftymk" path="res://CardList/Cards/gift.tres" id="13_john3"]
+
+[resource]
+script = ExtResource("3_2q8h0")
+card_list = Array[Resource]([ExtResource("1_1jhm6"), ExtResource("1_1jhm6"), ExtResource("2_1boms"), ExtResource("2_1boms"), ExtResource("3_qe7n5"), ExtResource("3_qe7n5"), ExtResource("4_87qyd"), ExtResource("4_87qyd"), ExtResource("5_ien33"), ExtResource("5_ien33"), ExtResource("6_tj6js"), ExtResource("6_tj6js"), ExtResource("7_mphr3"), ExtResource("7_mphr3"), ExtResource("8_xutrq"), ExtResource("8_xutrq"), ExtResource("9_hgoq6"), ExtResource("9_hgoq6"), ExtResource("10_g172o"), ExtResource("11_tf5kq"), ExtResource("12_0jypn"), ExtResource("13_john3"), ExtResource("13_john3")])

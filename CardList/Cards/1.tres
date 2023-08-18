@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://csp5snxyk15as"]
+
+[ext_resource type="Script" path="res://CardList/Cards/CardResource.gd" id="1_it63g"]
+
+[resource]
+script = ExtResource("1_it63g")
+points = 1
+has_effect = false

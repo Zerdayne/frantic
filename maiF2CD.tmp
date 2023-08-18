@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmtkdkbe3biue"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_11fyv"]
+[ext_resource type="Script" path="res://hand.gd" id="2_stk32"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5v43u"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_clxax"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="Curve" id="Curve_b2rbp"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_11fyv")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_5v43u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_clxax")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7696, 0.638526, 0, -0.638526, 0.7696, 0, 9.90132, 0)
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19)
+
+[node name="Hand" type="Node3D" parent="."]
+script = ExtResource("2_stk32")
+spread_curve = SubResource("Curve_b2rbp")
