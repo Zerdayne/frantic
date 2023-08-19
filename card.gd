@@ -20,7 +20,8 @@ var original_position
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	scale = Vector3.ONE * 0.1
+	#scale = Vector3.ONE * 0.1
+	pass
 
 
 func setup(res: Resource):
@@ -41,14 +42,14 @@ func setup(res: Resource):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#if is_in_hand() and outlineVisible and is_player and !is_inspecting:
+	if is_in_hand() and outlineVisible and is_player and !is_inspecting:
 		# card hovered
-		#rotation.z = lerp(rotation.z, 0.0, ANIM_SPEED * delta)
-		#var view_spot = target_transform
-		#view_spot.origin.y += 4.5
-		#transform = transform.interpolate_with(view_spot, ANIM_SPEED * delta)
+		rotation.z = lerp(rotation.z, 0.0, ANIM_SPEED * delta)
+		var view_spot = target_transform
+		view_spot.origin = find_camera_pos()
+		transform = transform.interpolate_with(view_spot, ANIM_SPEED * delta)
 	if is_in_hand():
-		#transform = transform.interpolate_with(target_transform, ANIM_SPEED * delta)
+		transform = transform.interpolate_with(target_transform, ANIM_SPEED * delta)
 		rotation.z = lerp(rotation.z, target_rotation, ANIM_SPEED * delta)
 
 
@@ -64,7 +65,7 @@ func find_camera_pos() -> Vector3:
 	var camera = get_viewport().get_camera_3d()
 	var unprojected = camera.unproject_position(target_transform.origin)
 	# I fiddled with the y coordinate and distance here so the full card is visible
-	return camera.project_position(Vector2(unprojected.x, 750), 2.0)
+	return camera.project_position(unprojected, 0)
 
 
 func is_in_hand() -> bool:
