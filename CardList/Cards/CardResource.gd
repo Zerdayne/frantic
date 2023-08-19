@@ -8,8 +8,8 @@ extends Resource
 		notify_property_list_changed()
 
 var effect: CardGameManager.effect
-var front: Texture
-var back: Texture
+var front: StandardMaterial3D
+var back: StandardMaterial3D
 
 func _get_property_list() -> Array:
 	var property_usage = PROPERTY_USAGE_NO_EDITOR

@@ -9,10 +9,15 @@ var deck = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	deck = CardGameManager.deck_map[CardGameManager.decks.BASE_GAME].deck
+	randomize()
+	deck.shuffle()
 	for res in deck:
 		var card = CARD.instantiate()
+		card.setup(res)
 		add_child(card)
-		card.position.z = position.z + 0.02
+		var count = get_children().filter(filterDeckNodes).size()
+		card.position.z = count * -0.002
+	$Area3D/CollisionShape3D.shape.size.z = get_children().filter(filterDeckNodes).back().position.z * -1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

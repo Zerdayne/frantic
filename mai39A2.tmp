@@ -14,7 +14,7 @@ point_count = 2
 [sub_resource type="Curve" id="Curve_7r4kh"]
 min_value = -1.0
 max_value = 0.0
-_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.495146, 0), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
 point_count = 3
 metadata/_snap_enabled = true
 
@@ -49,14 +49,13 @@ script = ExtResource("4_o2pbm")
 [node name="PlayerBoard" type="Node3D" parent="Board"]
 
 [node name="Hand" type="Node3D" parent="Board/PlayerBoard"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4.96374, 3.18905)
+transform = Transform3D(0.13, 0, 0, 0, 0.0919239, 0.0919239, 0, -0.0919239, 0.0919239, 0, 6.2097, 3.51088)
 script = ExtResource("2_stk32")
 camera_path = NodePath("../../../CameraPivot/Camera3D")
 bin_path = NodePath("../../Bin")
 spread_curve = SubResource("Curve_b2rbp")
 height_curve = SubResource("Curve_7r4kh")
 rotation_curve = SubResource("Curve_k04o2")
-width_array = Array[float]([0.0, 0.0, 0.75, 1.25, 1.75, 2.0])
 
 [node name="table" parent="." instance=ExtResource("6_buibh")]
 

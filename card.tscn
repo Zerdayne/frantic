@@ -1,26 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://6sa4umdu4ova"]
+[gd_scene load_steps=4 format=3 uid="uid://6sa4umdu4ova"]
 
-[ext_resource type="PackedScene" uid="uid://bohc4bbndjhpf" path="res://Assets/Models/card.glb" id="1_mr417"]
+[ext_resource type="PackedScene" uid="uid://cv6onnxkliaq8" path="res://Assets/Models/card.glb" id="1_mr417"]
 [ext_resource type="Script" path="res://card.gd" id="2_snpru"]
-[ext_resource type="Texture2D" uid="uid://bxqjcpfuf566w" path="res://Assets/Images/Cards/green.png" id="3_jk2o7"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_semxt"]
-albedo_texture = ExtResource("3_jk2o7")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g0vpn"]
 size = Vector3(5, 7, 0.02)
 
-[node name="card" groups=["card"] instance=ExtResource("1_mr417")]
+[node name="Card" groups=["card"] instance=ExtResource("1_mr417")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 script = ExtResource("2_snpru")
-
-[node name="Cube" parent="." index="0"]
-surface_material_override/1 = SubResource("StandardMaterial3D_semxt")
 
 [node name="Area3D" type="Area3D" parent="." index="1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 shape = SubResource("BoxShape3D_g0vpn")
+
+[node name="TopLeft" type="Label3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.8, 0.02)
+pixel_size = 0.02
+
+[node name="TopRight" type="Label3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.8, 0.02)
+pixel_size = 0.02
+
+[node name="BottomLeft" type="Label3D" parent="." index="4"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -2, -2.8, 0.02)
+pixel_size = 0.02
+
+[node name="BottomRight" type="Label3D" parent="." index="5"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 2, -2.8, 0.02)
+pixel_size = 0.02
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]

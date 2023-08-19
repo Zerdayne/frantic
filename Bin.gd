@@ -14,5 +14,5 @@ func _process(delta):
 func add_card(card):
 	card.get_parent().remove_child(card)
 	add_child(card)
-	card.position = position
-	card.position.z = position.z + 0.02
+	card.position = Vector3.ZERO
+	card.position.z += get_child_count() * 0.002

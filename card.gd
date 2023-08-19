@@ -6,6 +6,11 @@ const ANIM_SPEED := 12.0
 
 @onready var target_transform := global_transform
 
+@onready var top_left := $TopLeft
+@onready var top_right := $TopRight
+@onready var bottom_left := $BottomLeft
+@onready var bottom_right := $BottomRight
+
 var target_rotation := 0.0
 var outlineVisible := false
 var is_player := true
@@ -17,6 +22,22 @@ var original_position
 func _ready():
 	scale = Vector3.ONE * 0.1
 
+
+func setup(res: Resource):
+	if not is_inside_tree():
+		await ready
+	
+	get_node("Cube").set_surface_override_material(1, res.front)
+	
+	var label
+	if res.has_effect:
+		label = str(res.effect)
+	else:
+		label = str(res.points)
+	top_left.text = label
+	top_right.text = label
+	bottom_left.text = label
+	bottom_right.text = label
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

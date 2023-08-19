@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=16 format=3 uid="uid://d3rylm3w57mq5"]
+[gd_resource type="Resource" load_steps=17 format=3 uid="uid://d3rylm3w57mq5"]
 
 [ext_resource type="Resource" uid="uid://csp5snxyk15as" path="res://CardList/Cards/1.tres" id="1_6us0v"]
 [ext_resource type="Resource" uid="uid://crbq8yivtvpk6" path="res://CardList/Cards/2.tres" id="2_tp56p"]
@@ -16,7 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://bxqjcpfuf566w" path="res://Assets/Images/Cards/green.png" id="14_2ti5a"]
 [ext_resource type="Script" path="res://CardList/Decks/CardListResource.gd" id="14_10det"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyalw"]
+albedo_texture = ExtResource("14_2ti5a")
+
 [resource]
 script = ExtResource("14_10det")
 card_list = Array[Resource]([ExtResource("1_6us0v"), ExtResource("1_6us0v"), ExtResource("2_tp56p"), ExtResource("2_tp56p"), ExtResource("3_eshjo"), ExtResource("3_eshjo"), ExtResource("4_daqvc"), ExtResource("4_daqvc"), ExtResource("5_hweln"), ExtResource("5_hweln"), ExtResource("6_0gyfj"), ExtResource("6_0gyfj"), ExtResource("7_ht1dg"), ExtResource("7_ht1dg"), ExtResource("8_324jl"), ExtResource("8_324jl"), ExtResource("9_4h1co"), ExtResource("9_4h1co"), ExtResource("10_lac7p"), ExtResource("11_f6f0c"), ExtResource("12_r1px0"), ExtResource("13_fmhk8"), ExtResource("13_fmhk8")])
-front = ExtResource("14_2ti5a")
+front = SubResource("StandardMaterial3D_dyalw")
