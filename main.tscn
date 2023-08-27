@@ -2,25 +2,26 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_11fyv"]
 [ext_resource type="PackedScene" uid="uid://e4nxfnbigdbq" path="res://deck.tscn" id="2_bkva5"]
-[ext_resource type="Script" path="res://hand.gd" id="2_stk32"]
+[ext_resource type="Script" path="res://Scenes/Player/Hand.gd" id="4_854rj"]
 [ext_resource type="Script" path="res://Bin.gd" id="4_o2pbm"]
 [ext_resource type="PackedScene" uid="uid://b0p2kvmek3203" path="res://table.glb" id="6_buibh"]
 
 [sub_resource type="Curve" id="Curve_b2rbp"]
-min_value = -1.0
-_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+min_value = -0.5
+max_value = 0.5
+_data = [Vector2(0, -0.5), 0.0, 1.0, 0, 1, Vector2(1, 0.5), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_7r4kh"]
 min_value = -1.0
 max_value = 0.0
-_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, -0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(1, -0.5), 0.0, 0.0, 0, 0]
 point_count = 3
 metadata/_snap_enabled = true
 
 [sub_resource type="Curve" id="Curve_k04o2"]
 min_value = -1.0
-_data = [Vector2(0, 1), 0.0, -2.0, 0, 1, Vector2(1, -1), -2.0, 0.0, 1, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Main" type="Node3D"]
@@ -30,11 +31,8 @@ script = ExtResource("1_11fyv")
 transform = Transform3D(0.866025, -0.469847, 0.17101, -2.98023e-08, 0.34202, 0.939693, -0.5, -0.813798, 0.296198, 0, 17.1331, 10.2261)
 light_energy = 1.33
 
-[node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6.36396, 3.53553)
 current = true
 
 [node name="Board" type="Node3D" parent="."]
@@ -49,10 +47,9 @@ script = ExtResource("4_o2pbm")
 [node name="PlayerBoard" type="Node3D" parent="Board"]
 
 [node name="Hand" type="Node3D" parent="Board/PlayerBoard"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4.96374, 3.18905)
-script = ExtResource("2_stk32")
-camera_path = NodePath("../../../CameraPivot/Camera3D")
-bin_path = NodePath("../../Bin")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.6)
+script = ExtResource("4_854rj")
+camera_path = NodePath("../../../Camera3D")
 spread_curve = SubResource("Curve_b2rbp")
 height_curve = SubResource("Curve_7r4kh")
 rotation_curve = SubResource("Curve_k04o2")

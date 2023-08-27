@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://doxgok86rc6xb"]
+
+[ext_resource type="PackedScene" uid="uid://e4nxfnbigdbq" path="res://deck.tscn" id="1_l5f3v"]
+[ext_resource type="Script" path="res://Bin.gd" id="2_3etxo"]
+[ext_resource type="Script" path="res://Scenes/Game/Players.gd" id="3_jpon3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tieb8"]
+size = Vector3(200, 1, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usa1j"]
+albedo_color = Color(0.317647, 0.317647, 0.317647, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_im8lc"]
+material = SubResource("StandardMaterial3D_usa1j")
+size = Vector3(200, 1, 200)
+
+[node name="Game" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+light_energy = 1.33
+sky_mode = 1
+
+[node name="Board" type="Node3D" parent="."]
+
+[node name="Deck" parent="Board" instance=ExtResource("1_l5f3v")]
+transform = Transform3D(-1, 1.50996e-07, -6.60024e-15, 0, -4.37114e-08, -1, -1.50996e-07, -1, 4.37114e-08, 0.5, 0, 0)
+
+[node name="Bin" type="Node3D" parent="Board" groups=["bin"]]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -0.5, 0, 0)
+script = ExtResource("2_3etxo")
+
+[node name="Players" type="Node3D" parent="."]
+script = ExtResource("3_jpon3")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_tieb8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_im8lc")

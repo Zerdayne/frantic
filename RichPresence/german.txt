@@ -1,0 +1,8 @@
+"lang" {
+	"Language"	"german"
+	"Tokens"
+	{
+		"#MainMenu"	"Hauptmenü"
+		"#InGame"	"In einem Spiel"
+	}
+}

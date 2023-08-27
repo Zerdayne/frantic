@@ -1,0 +1,8 @@
+"lang" {
+	"Language"	"english"
+	"Tokens"
+	{
+		"#MainMenu"	"Main Menu"
+		"#InGame"	"In a Game"
+	}
+}

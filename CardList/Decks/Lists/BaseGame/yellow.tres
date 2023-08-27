@@ -1,25 +1,17 @@
-[gd_resource type="Resource" load_steps=17 format=3 uid="uid://dufw3sqeb7fxh"]
+[gd_resource type="Resource" load_steps=11 format=3 uid="uid://ov6djwuj4dms"]
 
-[ext_resource type="Resource" uid="uid://csp5snxyk15as" path="res://CardList/Cards/1.tres" id="1_02sah"]
-[ext_resource type="Resource" uid="uid://crbq8yivtvpk6" path="res://CardList/Cards/2.tres" id="2_n3i7b"]
-[ext_resource type="Resource" uid="uid://bn2gyhfwqavao" path="res://CardList/Cards/3.tres" id="3_vq045"]
-[ext_resource type="Resource" uid="uid://sdow5hv4rpfy" path="res://CardList/Cards/4.tres" id="4_nbr3w"]
-[ext_resource type="Resource" uid="uid://cbikenh7o3nut" path="res://CardList/Cards/5.tres" id="5_ch0me"]
-[ext_resource type="Resource" uid="uid://diy6alb511ys4" path="res://CardList/Cards/6.tres" id="6_q0ltp"]
-[ext_resource type="Resource" uid="uid://dl64oxp0mo7mr" path="res://CardList/Cards/7.tres" id="7_o7eu2"]
-[ext_resource type="Resource" uid="uid://c67yiws0s1v4" path="res://CardList/Cards/8.tres" id="8_p1tq7"]
-[ext_resource type="Resource" uid="uid://daslpxaccoego" path="res://CardList/Cards/9.tres" id="9_abna4"]
-[ext_resource type="Resource" uid="uid://b181ekds2ok8f" path="res://CardList/Cards/second_chance.tres" id="10_kpm4v"]
-[ext_resource type="Resource" uid="uid://bagt1s0u3lrb0" path="res://CardList/Cards/skip.tres" id="11_4jqua"]
-[ext_resource type="Resource" uid="uid://crtssq06laks5" path="res://CardList/Cards/exchange.tres" id="12_gwbtq"]
-[ext_resource type="Resource" uid="uid://boaosh1hftymk" path="res://CardList/Cards/gift.tres" id="13_1dqas"]
-[ext_resource type="Texture2D" uid="uid://k0xwean8arrg" path="res://Assets/Images/Cards/yellow.png" id="14_u2aqu"]
-[ext_resource type="Script" path="res://CardList/Decks/CardListResource.gd" id="15_ebye5"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fav0p"]
-albedo_texture = ExtResource("14_u2aqu")
+[ext_resource type="Resource" uid="uid://1n6lbt8s8ma2" path="res://CardList/Cards/Ⅰ.tres" id="1_a5gk3"]
+[ext_resource type="Resource" uid="uid://c3p7g6gdjx3vh" path="res://CardList/Cards/Ⅱ.tres" id="2_066sy"]
+[ext_resource type="Resource" uid="uid://cdvuoupsk5qg3" path="res://CardList/Cards/Ⅲ.tres" id="3_x8ekc"]
+[ext_resource type="Resource" uid="uid://csaif6l6e4n0p" path="res://CardList/Cards/Ⅳ.tres" id="4_hjhhx"]
+[ext_resource type="Resource" uid="uid://d4lsdjrojpgrk" path="res://CardList/Cards/Ⅴ.tres" id="5_bt1ht"]
+[ext_resource type="Resource" uid="uid://itugg76vwmgf" path="res://CardList/Cards/Ⅵ.tres" id="6_p8l0h"]
+[ext_resource type="Resource" uid="uid://bdsj4nsuggy0c" path="res://CardList/Cards/Ⅶ.tres" id="7_7yc8u"]
+[ext_resource type="Resource" uid="uid://d08fl2jup0416" path="res://CardList/Cards/Ⅷ.tres" id="8_n5chh"]
+[ext_resource type="Resource" uid="uid://dwhiph8ia0nvo" path="res://CardList/Cards/Ⅸ.tres" id="9_igxoy"]
+[ext_resource type="Script" path="res://CardList/Decks/Lists/CardListResource.gd" id="10_rvw3g"]
 
 [resource]
-script = ExtResource("15_ebye5")
-card_list = Array[Resource]([ExtResource("1_02sah"), ExtResource("1_02sah"), ExtResource("2_n3i7b"), ExtResource("2_n3i7b"), ExtResource("3_vq045"), ExtResource("3_vq045"), ExtResource("4_nbr3w"), ExtResource("4_nbr3w"), ExtResource("5_ch0me"), ExtResource("5_ch0me"), ExtResource("6_q0ltp"), ExtResource("6_q0ltp"), ExtResource("7_o7eu2"), ExtResource("7_o7eu2"), ExtResource("8_p1tq7"), ExtResource("8_p1tq7"), ExtResource("9_abna4"), ExtResource("9_abna4"), ExtResource("10_kpm4v"), ExtResource("11_4jqua"), ExtResource("12_gwbtq"), ExtResource("13_1dqas"), ExtResource("13_1dqas")])
-front = SubResource("StandardMaterial3D_fav0p")
+script = ExtResource("10_rvw3g")
+card_list = Array[Resource]([ExtResource("1_a5gk3"), ExtResource("1_a5gk3"), ExtResource("2_066sy"), ExtResource("2_066sy"), ExtResource("3_x8ekc"), ExtResource("3_x8ekc"), ExtResource("4_hjhhx"), ExtResource("4_hjhhx"), ExtResource("5_bt1ht"), ExtResource("5_bt1ht"), ExtResource("6_p8l0h"), ExtResource("6_p8l0h"), ExtResource("7_7yc8u"), ExtResource("7_7yc8u"), ExtResource("8_n5chh"), ExtResource("8_n5chh"), ExtResource("9_igxoy"), ExtResource("9_igxoy")])
+color = 4

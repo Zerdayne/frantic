@@ -6,51 +6,28 @@ const ANIM_SPEED := 12.0
 
 @onready var target_transform := global_transform
 
-@onready var top_left := $TopLeft
-@onready var top_right := $TopRight
-@onready var bottom_left := $BottomLeft
-@onready var bottom_right := $BottomRight
-
-var target_rotation := 0.0
 var outlineVisible := false
 var is_player := true
-var is_inspecting := false
 
-var original_position
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	#scale = Vector3.ONE * 0.1
-	pass
-
+var color: CardGameManager.color
+var value: CardGameManager.value
 
 func setup(res: Resource):
 	if not is_inside_tree():
 		await ready
 	
 	get_node("Cube").set_surface_override_material(1, res.front)
+	color = res.color
+	value = res.label
 	
-	var label
-	if res.has_effect:
-		label = str(res.effect)
-	else:
-		label = str(res.points)
-	top_left.text = label
-	top_right.text = label
-	bottom_left.text = label
-	bottom_right.text = label
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_in_hand() and outlineVisible and is_player and !is_inspecting:
-		# card hovered
-		rotation.z = lerp(rotation.z, 0.0, ANIM_SPEED * delta)
+	if is_in_hand() and outlineVisible and is_player:
 		var view_spot = target_transform
-		view_spot.origin = find_camera_pos()
+		view_spot.origin += view_spot.basis.y * 0.2
 		transform = transform.interpolate_with(view_spot, ANIM_SPEED * delta)
-	if is_in_hand():
+	elif is_in_hand():
 		transform = transform.interpolate_with(target_transform, ANIM_SPEED * delta)
-		rotation.z = lerp(rotation.z, target_rotation, ANIM_SPEED * delta)
 
 
 func _on_area_3d_mouse_entered():
@@ -65,7 +42,7 @@ func find_camera_pos() -> Vector3:
 	var camera = get_viewport().get_camera_3d()
 	var unprojected = camera.unproject_position(target_transform.origin)
 	# I fiddled with the y coordinate and distance here so the full card is visible
-	return camera.project_position(unprojected, 0)
+	return camera.project_position(Vector2(unprojected.x, 750), -2.0)
 
 
 func is_in_hand() -> bool:
@@ -73,20 +50,6 @@ func is_in_hand() -> bool:
 
 
 func _on_area_3d_input_event(camera, event, _position, _normal, _shape_idx):
-	if event.is_action_pressed("left_click") and is_in_hand():
-		play_card.emit(self)
-	elif event.is_action_pressed("inspect"):
-		inspect(camera)
-
-
-func inspect(camera):
-	if is_inspecting:
-		target_transform = original_position
-	else:
-		original_position = target_transform
-		var camera_position = find_camera_pos()
-		var view_spot = camera_position
-		view_spot.z -= 8
-		target_transform.origin = view_spot
-	
-	is_inspecting = !is_inspecting
+	if is_player:
+		if event.is_action_pressed("left_click") and is_in_hand() and CardGameManager.is_card_playable(self):
+			play_card.emit(self)

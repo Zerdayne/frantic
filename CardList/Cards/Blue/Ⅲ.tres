@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cardskoriyh6r"]
+
+[ext_resource type="Texture2D" uid="uid://biqbeg4w24mak" path="res://Assets/Images/Cards/Front/Blue/Ⅲ.png" id="1_0uc8a"]
+[ext_resource type="Script" path="res://CardList/Cards/CardFrontMaterialResource.gd" id="2_a0u08"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ri4jy"]
+albedo_texture = ExtResource("1_0uc8a")
+
+[resource]
+script = ExtResource("2_a0u08")
+front = SubResource("StandardMaterial3D_ri4jy")

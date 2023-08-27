@@ -1,8 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://crbq8yivtvpk6"]
-
-[ext_resource type="Script" path="res://CardList/Cards/CardResource.gd" id="1_25p88"]
-
-[resource]
-script = ExtResource("1_25p88")
-points = 2
-has_effect = false

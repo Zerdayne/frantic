@@ -16,3 +16,5 @@ func add_card(card):
 	add_child(card)
 	card.position = Vector3.ZERO
 	card.position.z += get_child_count() * 0.002
+	card.rotation.x = 0
+	card.rotation.y = 0

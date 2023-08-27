@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d08fl2jup0416"]
+
+[ext_resource type="Script" path="res://CardList/Cards/CardResource.gd" id="1_fenob"]
+
+[resource]
+script = ExtResource("1_fenob")
+label = 7
+has_effect = false
+points = 8

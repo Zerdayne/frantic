@@ -26,8 +26,9 @@ func _process(delta):
 
 
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
-	if event.is_action_pressed("left_click"):
-		draw.emit(get_children().filter(filterDeckNodes).back())
+	var cards = get_children().filter(filterDeckNodes)
+	if event.is_action_pressed("left_click") and cards.size() > 0:
+		draw.emit(cards.back())
 
 
 func filterDeckNodes(node: Node):

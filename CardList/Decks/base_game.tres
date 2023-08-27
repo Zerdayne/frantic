@@ -1,11 +1,11 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://pes4f6yadda1"]
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://1v06ekvm58fk"]
 
 [ext_resource type="Script" path="res://CardList/Decks/DeckResource.gd" id="1_ckq0g"]
-[ext_resource type="Resource" uid="uid://du2pv4itxv5l1" path="res://CardList/Decks/Lists/BaseGame/blue.tres" id="1_kl81m"]
-[ext_resource type="Resource" uid="uid://d3rylm3w57mq5" path="res://CardList/Decks/Lists/BaseGame/green.tres" id="2_jewgc"]
-[ext_resource type="Resource" uid="uid://bcc0o0pipoecc" path="res://CardList/Decks/Lists/BaseGame/red.tres" id="3_354gb"]
-[ext_resource type="Resource" uid="uid://dufw3sqeb7fxh" path="res://CardList/Decks/Lists/BaseGame/yellow.tres" id="4_soagi"]
+[ext_resource type="Resource" uid="uid://curwgdfnkbkug" path="res://CardList/Decks/Lists/BaseGame/blue.tres" id="1_o8tvl"]
+[ext_resource type="Resource" uid="uid://b5hwgvmh4kxg1" path="res://CardList/Decks/Lists/BaseGame/red.tres" id="2_4tw1q"]
+[ext_resource type="Resource" uid="uid://ov6djwuj4dms" path="res://CardList/Decks/Lists/BaseGame/yellow.tres" id="3_uj1pp"]
+[ext_resource type="Resource" uid="uid://bx4y0m5tv7swe" path="res://CardList/Decks/Lists/BaseGame/green.tres" id="4_d7ivi"]
 
 [resource]
 script = ExtResource("1_ckq0g")
-card_lists = Array[Resource]([ExtResource("3_354gb"), ExtResource("1_kl81m"), ExtResource("2_jewgc"), ExtResource("4_soagi")])
+card_lists = Array[Resource]([ExtResource("1_o8tvl"), ExtResource("2_4tw1q"), ExtResource("3_uj1pp"), ExtResource("4_d7ivi")])

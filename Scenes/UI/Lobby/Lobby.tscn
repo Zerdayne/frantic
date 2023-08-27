@@ -1,0 +1,210 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5ditq3o5jjc7"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Lobby/Lobby.gd" id="1_0wsg5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mohge"]
+bg_color = Color(0.254902, 0.254902, 0.32549, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_a1ydn"]
+font_weight = 600
+
+[sub_resource type="LabelSettings" id="LabelSettings_uho2e"]
+font = SubResource("SystemFont_a1ydn")
+font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3drv5"]
+bg_color = Color(0.254902, 0.254902, 0.32549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lapbm"]
+bg_color = Color(0.254902, 0.254902, 0.32549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1cwy"]
+bg_color = Color(0.254902, 0.254902, 0.32549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_51p83"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ju1c"]
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lrlou"]
+bg_color = Color(0.254902, 0.254902, 0.32549, 1)
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_0wsg5")
+
+[node name="Create" type="Button" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 80.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_mohge")
+text = "Create Lobby"
+
+[node name="LobbyName" type="TextEdit" parent="Create"]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 30.0
+offset_right = 520.0
+offset_bottom = 60.0
+
+[node name="Label" type="Label" parent="Create"]
+layout_mode = 0
+offset_left = 220.0
+offset_right = 348.0
+offset_bottom = 31.0
+text = "Lobby Name:"
+label_settings = SubResource("LabelSettings_uho2e")
+vertical_alignment = 1
+
+[node name="Join" type="Button" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 220.0
+offset_bottom = 160.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_3drv5")
+text = "Join Lobby"
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1700.0
+offset_top = 100.0
+offset_right = 1900.0
+offset_bottom = 160.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_lapbm")
+text = "Start Game"
+
+[node name="Leave" type="Button" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 1000.0
+offset_right = 220.0
+offset_bottom = 1060.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_h1cwy")
+text = "Leave Lobby"
+
+[node name="SteamName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1700.0
+offset_top = 20.0
+offset_right = 1900.0
+offset_bottom = 80.0
+grow_horizontal = 0
+text = "Steam Name"
+label_settings = SubResource("LabelSettings_51p83")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Players" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 180.0
+offset_right = 220.0
+offset_bottom = 980.0
+
+[node name="Label" type="Label" parent="Players"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 40.0
+text = "Players (0)"
+label_settings = SubResource("LabelSettings_4ju1c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Players"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 190.0
+offset_bottom = 790.0
+
+[node name="Chat" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 180.0
+offset_right = 1900.0
+offset_bottom = 980.0
+
+[node name="Name" type="Label" parent="Chat"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 210.0
+offset_bottom = 40.0
+text = "Lobby Name"
+label_settings = SubResource("LabelSettings_4ju1c")
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Chat"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 1650.0
+offset_bottom = 790.0
+
+[node name="Message" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1700.0
+offset_top = 1000.0
+offset_right = 1900.0
+offset_bottom = 1060.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_lrlou")
+text = "Send Message"
+
+[node name="TextEdit" type="TextEdit" parent="Message"]
+layout_mode = 0
+offset_left = -1460.0
+offset_right = -20.0
+offset_bottom = 60.0
+
+[node name="LobbyPopup" type="PopupPanel" parent="."]
+position = Vector2i(240, 180)
+size = Vector2i(1660, 800)
+
+[node name="Panel" type="Panel" parent="LobbyPopup"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 1656.0
+offset_bottom = 796.0
+
+[node name="Label" type="Label" parent="LobbyPopup/Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_right = 220.0
+offset_bottom = 40.0
+text = "Lobby List"
+label_settings = SubResource("LabelSettings_4ju1c")
+vertical_alignment = 1
+
+[node name="Close" type="Button" parent="LobbyPopup/Panel"]
+layout_mode = 0
+offset_left = 1440.0
+offset_top = 720.0
+offset_right = 1640.0
+offset_bottom = 780.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_3drv5")
+text = "Close Lobby List"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LobbyPopup/Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 1640.0
+offset_bottom = 700.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LobbyPopup/Panel/ScrollContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="Message" to="." method="_on_message_pressed"]
+[connection signal="pressed" from="LobbyPopup/Panel/Close" to="." method="_on_close_pressed"]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmtkdkbe3biue"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_11fyv"]
+[ext_resource type="PackedScene" uid="uid://e4nxfnbigdbq" path="res://deck.tscn" id="2_bkva5"]
+[ext_resource type="Script" path="res://hand.gd" id="2_stk32"]
+[ext_resource type="Script" path="res://Bin.gd" id="4_o2pbm"]
+[ext_resource type="PackedScene" uid="uid://b0p2kvmek3203" path="res://table.glb" id="6_buibh"]
+
+[sub_resource type="Curve" id="Curve_b2rbp"]
+min_value = -0.5
+max_value = 0.5
+_data = [Vector2(0, -0.5), 0.0, 1.0, 0, 1, Vector2(1, 0.5), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_7r4kh"]
+min_value = -1.0
+max_value = 0.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, -0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_k04o2"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_11fyv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.469847, 0.17101, -2.98023e-08, 0.34202, 0.939693, -0.5, -0.813798, 0.296198, 0, 17.1331, 10.2261)
+light_energy = 1.33
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
+current = true
+
+[node name="Board" type="Node3D" parent="."]
+
+[node name="Deck" parent="Board" instance=ExtResource("2_bkva5")]
+transform = Transform3D(-1, 1.50996e-07, -6.60024e-15, 0, -4.37114e-08, -1, -1.50996e-07, -1, 4.37114e-08, 0.5, 3, 0)
+
+[node name="Bin" type="Node3D" parent="Board"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -0.5, 3, 0)
+script = ExtResource("4_o2pbm")
+
+[node name="PlayerBoard" type="Node3D" parent="Board"]
+
+[node name="Hand" type="Node3D" parent="Board/PlayerBoard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.6)
+script = ExtResource("2_stk32")
+camera_path = NodePath("../../../CameraPivot/Camera3D")
+bin_path = NodePath("../../Bin")
+spread_curve = SubResource("Curve_b2rbp")
+height_curve = SubResource("Curve_7r4kh")
+rotation_curve = SubResource("Curve_k04o2")
+width_array = Array[float]([0.0, 0.0, 0.75, 1.25, 1.75, 2.0])
+
+[node name="table" parent="." instance=ExtResource("6_buibh")]
+
+[connection signal="draw" from="Board/Deck" to="Board/PlayerBoard/Hand" method="_on_deck_draw"]

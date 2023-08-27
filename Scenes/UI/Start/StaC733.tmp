@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://br5w2w24syxlo"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Start/Start.gd" id="1_dbjb7"]
+[ext_resource type="PackedScene" uid="uid://doxgok86rc6xb" path="res://Scenes/Game/Game.tscn" id="2_ys2tv"]
+[ext_resource type="PackedScene" uid="uid://c5ditq3o5jjc7" path="res://Scenes/UI/Lobby/Lobby.tscn" id="3_r1a3o"]
+
+[node name="Start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dbjb7")
+game_scene = ExtResource("2_ys2tv")
+lobby_scene = ExtResource("3_r1a3o")
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 31.0
+offset_right = 123.0
+offset_bottom = 62.0
+text = "Start Game"
+
+[node name="Multiplayer" type="Button" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 73.0
+offset_right = 123.0
+offset_bottom = 104.0
+text = "Multiplayer"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Multiplayer" to="." method="_on_multiplayer_pressed"]
