@@ -17,9 +17,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-CardGameManager="*res://Manager/CardGameManager.gd"
-Global="*res://Global.gd"
+SceneManager="*res://Manager/SceneManager.gd"
+SteamInit="*res://Globals/SteamInit.gd"
+SteamLobby="*res://Globals/SteamLobby.gd"
 SteamNetwork="*res://Globals/SteamNetwork.gd"
+CardGameManager="*res://Manager/CardGameManager.gd"
+RichPresence="*res://Globals/RichPresence.gd"
+DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
 
 [debug]
 
@@ -28,6 +32,10 @@ file_logging/enable_file_logging=true
 [dotnet]
 
 project/assembly_name="Frantic"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/discord-sdk-gd/plugin.cfg")
 
 [input]
 

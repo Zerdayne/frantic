@@ -1,0 +1,404 @@
+[gd_scene load_steps=4 format=3 uid="uid://h6pf2osqu5pg"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Multiplayer/Lobby/Lobby.gd" id="1_fvowj"]
+[ext_resource type="Texture2D" uid="uid://eloojj30146s" path="res://icon.svg" id="2_ow3rp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q03lt"]
+line_spacing = 8.0
+font_size = 20
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fvowj")
+
+[node name="Chat" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -305.0
+offset_top = -545.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+vertical = true
+
+[node name="History" type="VBoxContainer" parent="Chat"]
+custom_minimum_size = Vector2(0, 592)
+layout_mode = 2
+alignment = 2
+
+[node name="Background" type="PanelContainer" parent="Chat/History"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NewMessage" type="BoxContainer" parent="Chat"]
+layout_mode = 2
+
+[node name="Text" type="TextEdit" parent="Chat/NewMessage"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+
+[node name="Send" type="Button" parent="Chat/NewMessage"]
+layout_mode = 2
+text = "SEND"
+
+[node name="LobbyName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 121.0
+offset_bottom = 36.0
+text = "Person's Party"
+
+[node name="Actions" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -50.0
+offset_right = 320.0
+offset_bottom = -10.0
+grow_vertical = 0
+
+[node name="Create" type="Button" parent="Actions"]
+layout_mode = 2
+text = "Create lobby"
+
+[node name="Leave" type="Button" parent="Actions"]
+visible = false
+layout_mode = 2
+text = "Leave lobby"
+
+[node name="Start" type="Button" parent="Actions"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="PlayerList" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 46.0
+offset_right = 50.0
+offset_bottom = 86.0
+
+[node name="Left" type="VBoxContainer" parent="PlayerList"]
+custom_minimum_size = Vector2(350, 500)
+layout_mode = 2
+
+[node name="Player1" type="PanelContainer" parent="PlayerList/Left"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerList/Left/Player1"]
+layout_mode = 2
+
+[node name="Avatar" type="TextureRect" parent="PlayerList/Left/Player1/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ow3rp")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerList/Left/Player1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="PlayerList/Left/Player1/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player Name"
+label_settings = SubResource("LabelSettings_q03lt")
+vertical_alignment = 1
+
+[node name="MakeHost" type="Button" parent="PlayerList/Left/Player1/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Make host"
+
+[node name="Kick" type="Button" parent="PlayerList/Left/Player1/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Kick"
+
+[node name="Invite" type="Button" parent="PlayerList/Left/Player1/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 9
+text = "Invite player"
+
+[node name="Player2" type="PanelContainer" parent="PlayerList/Left"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerList/Left/Player2"]
+layout_mode = 2
+
+[node name="Avatar" type="TextureRect" parent="PlayerList/Left/Player2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ow3rp")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerList/Left/Player2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="PlayerList/Left/Player2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player Name"
+label_settings = SubResource("LabelSettings_q03lt")
+vertical_alignment = 1
+
+[node name="MakeHost" type="Button" parent="PlayerList/Left/Player2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Make host"
+
+[node name="Kick" type="Button" parent="PlayerList/Left/Player2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Kick"
+
+[node name="Invite" type="Button" parent="PlayerList/Left/Player2/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 9
+text = "Invite player"
+
+[node name="Player3" type="PanelContainer" parent="PlayerList/Left"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerList/Left/Player3"]
+layout_mode = 2
+
+[node name="Avatar" type="TextureRect" parent="PlayerList/Left/Player3/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ow3rp")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerList/Left/Player3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="PlayerList/Left/Player3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player Name"
+label_settings = SubResource("LabelSettings_q03lt")
+vertical_alignment = 1
+
+[node name="MakeHost" type="Button" parent="PlayerList/Left/Player3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Make host"
+
+[node name="Kick" type="Button" parent="PlayerList/Left/Player3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Kick"
+
+[node name="Invite" type="Button" parent="PlayerList/Left/Player3/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 9
+text = "Invite player"
+
+[node name="Player4" type="PanelContainer" parent="PlayerList/Left"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerList/Left/Player4"]
+layout_mode = 2
+
+[node name="Avatar" type="TextureRect" parent="PlayerList/Left/Player4/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ow3rp")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerList/Left/Player4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="PlayerList/Left/Player4/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player Name"
+label_settings = SubResource("LabelSettings_q03lt")
+vertical_alignment = 1
+
+[node name="MakeHost" type="Button" parent="PlayerList/Left/Player4/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Make host"
+
+[node name="Kick" type="Button" parent="PlayerList/Left/Player4/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Kick"
+
+[node name="Invite" type="Button" parent="PlayerList/Left/Player4/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 9
+text = "Invite player"
+
+[node name="Right" type="VBoxContainer" parent="PlayerList"]
+custom_minimum_size = Vector2(350, 500)
+layout_mode = 2
+
+[node name="Player5" type="PanelContainer" parent="PlayerList/Right"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerList/Right/Player5"]
+layout_mode = 2
+
+[node name="Avatar" type="TextureRect" parent="PlayerList/Right/Player5/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ow3rp")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerList/Right/Player5/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="PlayerList/Right/Player5/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player Name"
+label_settings = SubResource("LabelSettings_q03lt")
+vertical_alignment = 1
+
+[node name="MakeHost" type="Button" parent="PlayerList/Right/Player5/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Make host"
+
+[node name="Kick" type="Button" parent="PlayerList/Right/Player5/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Kick"
+
+[node name="Invite" type="Button" parent="PlayerList/Right/Player5/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 9
+text = "Invite player"
+
+[node name="Player6" type="PanelContainer" parent="PlayerList/Right"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerList/Right/Player6"]
+layout_mode = 2
+
+[node name="Avatar" type="TextureRect" parent="PlayerList/Right/Player6/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ow3rp")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerList/Right/Player6/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="PlayerList/Right/Player6/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player Name"
+label_settings = SubResource("LabelSettings_q03lt")
+vertical_alignment = 1
+
+[node name="MakeHost" type="Button" parent="PlayerList/Right/Player6/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Make host"
+
+[node name="Kick" type="Button" parent="PlayerList/Right/Player6/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Kick"
+
+[node name="Invite" type="Button" parent="PlayerList/Right/Player6/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 9
+text = "Invite player"
+
+[node name="Player7" type="PanelContainer" parent="PlayerList/Right"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerList/Right/Player7"]
+layout_mode = 2
+
+[node name="Avatar" type="TextureRect" parent="PlayerList/Right/Player7/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ow3rp")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerList/Right/Player7/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="PlayerList/Right/Player7/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player Name"
+label_settings = SubResource("LabelSettings_q03lt")
+vertical_alignment = 1
+
+[node name="MakeHost" type="Button" parent="PlayerList/Right/Player7/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Make host"
+
+[node name="Kick" type="Button" parent="PlayerList/Right/Player7/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Kick"
+
+[node name="Invite" type="Button" parent="PlayerList/Right/Player7/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 9
+text = "Invite player"
+
+[node name="Player8" type="PanelContainer" parent="PlayerList/Right"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerList/Right/Player8"]
+layout_mode = 2
+
+[node name="Avatar" type="TextureRect" parent="PlayerList/Right/Player8/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ow3rp")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerList/Right/Player8/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="PlayerList/Right/Player8/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player Name"
+label_settings = SubResource("LabelSettings_q03lt")
+vertical_alignment = 1
+
+[node name="MakeHost" type="Button" parent="PlayerList/Right/Player8/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Make host"
+
+[node name="Kick" type="Button" parent="PlayerList/Right/Player8/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 9
+text = "Kick"
+
+[node name="Invite" type="Button" parent="PlayerList/Right/Player8/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 9
+text = "Invite player"
