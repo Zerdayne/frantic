@@ -35,7 +35,7 @@ var _IS_CREATING_LOBBY: bool = false
 func _ready():
 	set_steam_id(Steam.getSteamID())
 	if get_steam_id() == 0:
-		push_warning("Unable to get steam id of user, check steam has been initialized first.")
+		push_warning("[STEAM_LOBBY] Unable to get steam id of user, check steam has been initialized first.")
 		return
 	
 	Steam.lobby_created.connect(_on_lobby_created)
@@ -131,11 +131,11 @@ func create_lobby(lobby_type: Steam.LobbyType, max_players: int = 2) -> void:
 	set_is_creating_lobby(true)
 	
 	if not in_lobby():
-		print("Trying to create lobby of type %s" % lobby_type)
+		print("[STEAM_LOBBY] Trying to create lobby of type %s" % lobby_type)
 		Steam.createLobby(lobby_type, max_players)
 
 func join_lobby(lobby_id: int) -> void:
-	print("Trying to join lobby %s" % lobby_id)
+	print("[STEAM_LOBBY] Trying to join lobby %s" % lobby_id)
 	if not in_lobby():
 		clear_lobby_members()
 		Steam.joinLobby(lobby_id)
@@ -143,7 +143,7 @@ func join_lobby(lobby_id: int) -> void:
 func leave_lobby():
 	if in_lobby():
 		var lobby_id = get_lobby_id()
-		print("Leaving lobby %s" % lobby_id)
+		print("[STEAM_LOBBY] Leaving lobby %s" % lobby_id)
 		
 		Steam.leaveLobby(lobby_id)
 		
@@ -187,24 +187,24 @@ func _owner_changed(from: int, to: int) -> void:
 #######################
 
 func _on_lobby_created(connect: int, lobby_id: int) -> void:
-	print("Lobby created called")
+	print("[STEAM_LOBBY] Lobby created called")
 	set_is_creating_lobby(false)
 	if connect == 1:
 		set_lobby_id(lobby_id)
-		print("Created Steam lobby with id: %s" % lobby_id)
+		print("[STEAM_LOBBY] Created Steam lobby with id: %s" % lobby_id)
 		
 		var relay = Steam.allowP2PPacketRelay(true)
-		print("Relay configuration response: %s" % relay)
+		print("[STEAM_LOBBY] Relay configuration response: %s" % relay)
 		
 		lobby_created.emit(get_lobby_id())
 	else:
-		push_error("Failed to create lobby: %s" % connect)
+		push_error("[STEAM_LOBBY] Failed to create lobby: %s" % connect)
 
 func _on_lobby_match_list() -> void:
 	pass
 
 func _on_lobby_joined(lobby_id: int, permission: int, locked: bool, response: int) -> void:
-	print("Lobby joined!")
+	print("[STEAM_LOBBY] Lobby joined!")
 	set_lobby_id(lobby_id)
 	_update_lobby_members()
 	lobby_joined.emit(get_lobby_id())
@@ -212,30 +212,30 @@ func _on_lobby_joined(lobby_id: int, permission: int, locked: bool, response: in
 func _on_lobby_chat_update(lobby_id: int, changed_user: int, user_made_change: int, chat_state: int) -> void:
 	match chat_state:
 		Steam.CHAT_MEMBER_STATE_CHANGE_ENTERED:
-			print("Player %s joined lobby %s" % [changed_user, lobby_id])
+			print("[STEAM_LOBBY] Player %s joined lobby %s" % [changed_user, lobby_id])
 			player_joined_lobby.emit(changed_user)
 		Steam.CHAT_MEMBER_STATE_CHANGE_LEFT:
-			print("Player %s left the lobby %s" % [changed_user, lobby_id])
+			print("[STEAM_LOBBY] Player %s left the lobby %s" % [changed_user, lobby_id])
 			player_left_lobby.emit(changed_user)
 		Steam.CHAT_MEMBER_STATE_CHANGE_KICKED:
-			print("Player %s was kicked by %s" % [changed_user, user_made_change])
+			print("[STEAM_LOBBY] Player %s was kicked by %s" % [changed_user, user_made_change])
 			player_left_lobby.emit(changed_user)
 		Steam.CHAT_MEMBER_STATE_CHANGE_BANNED:
-			print("Player %s was banned by %s" % [changed_user, user_made_change])
+			print("[STEAM_LOBBY] Player %s was banned by %s" % [changed_user, user_made_change])
 			player_left_lobby.emit(changed_user)
 		Steam.CHAT_MEMBER_STATE_CHANGE_DISCONNECTED:
-			print("Player %s disconnected" % changed_user)
+			print("[STEAM_LOBBY] Player %s disconnected" % changed_user)
 			player_left_lobby.emit(changed_user)
 
 func _on_lobby_message(lobby_id: int, sender: int, message: String, chat_type: int) -> void:
 	match chat_type:
 		Steam.CHAT_ENTRY_TYPE_CHAT_MSG:
 			if not has_lobby_member(sender):
-				push_error("Received a message from a user we dont have locally!")
+				push_error("[STEAM_LOBBY] Received a message from a user we dont have locally!")
 			var name = get_lobby_member(sender);
 			chat_message_received.emit(sender, name, message)
 		_:
-			push_warning("Unhandled chat message type received: %s" % chat_type)
+			push_warning("[STEAM_LOBBY] Unhandled chat message type received: %s" % chat_type)
 
 func _on_lobby_data_update(success, lobby_id: int, member_id: int) -> void:
 	if success:
@@ -246,11 +246,11 @@ func _on_lobby_data_update(success, lobby_id: int, member_id: int) -> void:
 			set_lobby_host(host)
 		lobby_data_updated.emit(member_id)
 
-func _on_lobby_invite() -> void:
-	pass
+func _on_lobby_invite(inviter: int, lobby_id: int, member_id: int) -> void:
+	join_lobby(lobby_id)
 
 func _on_lobby_join_requested(lobby_id: int, friend_id: int) -> void:
-	print("Attempting to join lobby %s from request" % lobby_id)
+	print("[STEAM_LOBBY] Attempting to join lobby %s from request" % lobby_id)
 	lobby_join_requested.emit(lobby_id)
 	# join_lobby(lobby_id)
 
@@ -266,7 +266,7 @@ func _check_command_line():
 	if args.size() > 0:
 		var lobby_invite_arg := false
 		for arg in args:
-			print("Command line: " + str(arg))
+			print("[STEAM_LOBBY] Command line: " + str(arg))
 			
 			# An invite argument was passed
 			if lobby_invite_arg:

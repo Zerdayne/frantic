@@ -184,7 +184,7 @@ func is_peer_connected(steam_id: int) -> bool:
 func _read_p2p_packet(packet_size: int) -> void:
 	var packet = Steam.readP2PPacket(packet_size, 0)
 	
-	if packet.empty():
+	if packet.is_empty():
 		push_warning("[STEAM_NETWORK] Read an empty packet with non-zero size!")
 	
 	var sender: int = packet['steam_id_remote']
