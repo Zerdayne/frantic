@@ -91,6 +91,8 @@ func _on_lobby_created(lobby_id: int):
 
 func _on_lobby_joined(lobby_id: int):
 	_render_lobby_members()
+	create_btn.hide()
+	leave_btn.show()
 
 func _on_lobby_owner_changed():
 	pass # TODO

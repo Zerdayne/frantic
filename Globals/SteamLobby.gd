@@ -247,7 +247,7 @@ func _on_lobby_data_update(success, lobby_id: int, member_id: int) -> void:
 		lobby_data_updated.emit(member_id)
 
 func _on_lobby_invite(inviter: int, lobby_id: int, member_id: int) -> void:
-	join_lobby(lobby_id)
+	pass
 
 func _on_lobby_join_requested(lobby_id: int, friend_id: int) -> void:
 	print("[STEAM_LOBBY] Attempting to join lobby %s from request" % lobby_id)
