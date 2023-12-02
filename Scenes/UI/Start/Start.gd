@@ -10,4 +10,4 @@ func _on_play_pressed():
 	CardGameManager.start_game(game_scene)
 
 func _on_multiplayer_pressed():
-	SceneManager.open_lobby()
+	SceneManager.open_lobby_list()

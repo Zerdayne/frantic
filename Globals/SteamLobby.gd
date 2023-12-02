@@ -7,6 +7,8 @@ extends Node
 signal player_joined_lobby(lobby_id)
 signal player_left_lobby(steam_id)
 
+signal lobby_list(lobbies)
+
 signal lobby_created(lobby_id)
 signal lobby_joined(lobby_id)
 signal lobby_join_requested(lobby_id)
@@ -200,8 +202,8 @@ func _on_lobby_created(connect: int, lobby_id: int) -> void:
 	else:
 		push_error("[STEAM_LOBBY] Failed to create lobby: %s" % connect)
 
-func _on_lobby_match_list() -> void:
-	pass
+func _on_lobby_match_list(lobbies: Array) -> void:
+	lobby_list.emit(lobbies)
 
 func _on_lobby_joined(lobby_id: int, permission: int, locked: bool, response: int) -> void:
 	print("[STEAM_LOBBY] Lobby joined!")
@@ -247,7 +249,8 @@ func _on_lobby_data_update(success, lobby_id: int, member_id: int) -> void:
 		lobby_data_updated.emit(member_id)
 
 func _on_lobby_invite(inviter: int, lobby_id: int, member_id: int) -> void:
-	pass
+	print("[STEAM_LOBBY] User %s got an invite from %s to lobby %s" % [member_id, inviter, lobby_id])
+	
 
 func _on_lobby_join_requested(lobby_id: int, friend_id: int) -> void:
 	print("[STEAM_LOBBY] Attempting to join lobby %s from request" % lobby_id)
